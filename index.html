@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TypePrint | AI Proxy Attendance Detector</title>
+
+    <!-- Step 2: CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         MAIN APPLICATION
+    =============================== -->
+
+    <div class="app-container">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">TP</div>
+
+                <div>
+                    <h2>TypePrint</h2>
+                    <p>AI Security System</p>
+                </div>
+            </div>
+
+            <nav class="navigation">
+
+                <button class="nav-item active" data-section="dashboard">
+                    <span>⌂</span>
+                    Dashboard
+                </button>
+
+                <button class="nav-item" data-section="enrollment">
+                    <span>✦</span>
+                    Enrollment
+                </button>
+
+                <button class="nav-item" data-section="verification">
+                    <span>✓</span>
+                    Verification
+                </button>
+
+                <button class="nav-item" data-section="analytics">
+                    <span>⌁</span>
+                    Analytics
+                </button>
+
+            </nav>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>System Online</strong>
+                    <small>AI Engine Ready</small>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- ===== MAIN CONTENT ===== -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div>
+                    <p class="small-label">AI BIOMETRIC SECURITY</p>
+
+                    <h1>
+                        TypePrint
+                    </h1>
+
+                    <p class="subtitle">
+                        AI Proxy Attendance Detector using Keystroke Biometrics
+                    </p>
+                </div>
+
+                <div class="header-right">
+
+                    <div class="live-indicator">
+                        <span></span>
+                        LIVE
+                    </div>
+
+                    <div class="user-profile">
+                        <div class="avatar">A</div>
+
+                        <div>
+                            <strong>Admin</strong>
+                            <small>Science Expo Demo</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 DASHBOARD SECTION
+            ========================================== -->
+
+            <section id="dashboard" class="page-section active-section">
+
+                <div class="welcome-card">
+
+                    <div>
+
+                        <span class="tag">
+                            AI-POWERED
+                        </span>
+
+                        <h2>
+                            Detect Proxy Through
+                            <span>Typing Behaviour</span>
+                        </h2>
+
+                        <p>
+                            TypePrint verifies users using their unique
+                            keystroke rhythm instead of relying only on
+                            passwords or additional biometric hardware.
+                        </p>
+
+                    </div>
+
+                    <div class="security-visual">
+                        <div class="scan-circle">
+                            <span>TP</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- STAT CARDS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            👥
+                        </div>
+
+                        <div>
+                            <p>Enrolled Users</p>
+                            <h3 id="totalUsers">0</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <p>Verified Users</p>
+                            <h3 id="verifiedCount">0</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ⚠
+                        </div>
+
+                        <div>
+                            <p>Proxy Attempts</p>
+                            <h3 id="proxyCount">0</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ⚡
+                        </div>
+
+                        <div>
+                            <p>System Accuracy</p>
+                            <h3 id="accuracy">--%</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="small-label">QUICK ACTIONS</p>
+                        <h2>Start a Test</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="action-grid">
+
+                    <button
+                        class="action-card"
+                        data-section="enrollment">
+
+                        <div class="action-icon">
+                            +
+                        </div>
+
+                        <h3>
+                            Enroll New User
+                        </h3>
+
+                        <p>
+                            Create a typing biometric profile
+                            using multiple samples.
+                        </p>
+
+                        <span>
+                            Start Enrollment →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="action-card"
+                        data-section="verification">
+
+                        <div class="action-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            Verify User
+                        </h3>
+
+                        <p>
+                            Check whether the current typing
+                            pattern matches the enrolled user.
+                        </p>
+
+                        <span>
+                            Start Verification →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- RECENT RESULT -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="small-label">
+                                LATEST RESULT
+                            </p>
+
+                            <h2>
+                                Verification Status
+                            </h2>
+                        </div>
+
+                        <span
+                            id="dashboardStatus"
+                            class="status-badge waiting">
+                            WAITING
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-placeholder">
+
+                        <div class="result-icon">
+                            ?
+                        </div>
+
+                        <h3>
+                            No verification performed
+                        </h3>
+
+                        <p>
+                            Start a verification test to see
+                            the AI result here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 ENROLLMENT SECTION
+            ========================================== -->
+
+            <section
+                id="enrollment"
+                class="page-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="small-label">
+                            STEP 01
+                        </p>
+
+                        <h2>
+                            User Enrollment
+                        </h2>
+
+                        <p>
+                            Create a unique typing biometric
+                            profile for the user.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="enrollment-layout">
+
+                    <!-- USER DETAILS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="small-label">
+                                    USER PROFILE
+                                </p>
+
+                                <h2>
+                                    Basic Information
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="userName">
+                                Student Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="userName"
+                                placeholder="Enter student name"
+                                autocomplete="off">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="userId">
+                                Student ID
+                            </label>
+
+                            <input
+                                type="text"
+                                id="userId"
+                                placeholder="Enter student ID"
+                                autocomplete="off">
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Why 10 samples?
+                            </strong>
+
+                            <p>
+                                Multiple samples help the AI understand
+                                the natural variation in a user's typing
+                                rhythm.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TYPING SAMPLE -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="small-label">
+                                    BIOMETRIC CAPTURE
+                                </p>
+
+                                <h2>
+                                    Typing Samples
+                                </h2>
+
+                            </div>
+
+                            <div class="sample-counter">
+                                <span id="sampleNumber">
+                                    0
+                                </span>
+                                / 10
+                            </div>
+
+                        </div>
+
+
+                        <div class="phrase-box">
+
+                            <p>
+                                Type the following phrase:
+                            </p>
+
+                            <strong id="enrollmentPhrase">
+                                TypePrint verifies my identity
+                                through my typing rhythm.
+                            </strong>
+
+                        </div>
+
+
+                        <textarea
+                            id="enrollmentInput"
+                            class="typing-input"
+                            placeholder="Start typing the phrase here..."
+                            rows="4"
+                            autocomplete="off"
+                            spellcheck="false">
+                        </textarea>
+
+
+                        <div class="typing-metrics">
+
+                            <div>
+                                <span>Dwell Time</span>
+                                <strong id="dwellDisplay">
+                                    -- ms
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Flight Time</span>
+                                <strong id="flightDisplay">
+                                    -- ms
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Typing Speed</span>
+                                <strong id="speedDisplay">
+                                    -- WPM
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-container">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Enrollment Progress
+                                </span>
+
+                                <strong id="enrollmentProgressText">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    id="enrollmentProgress"
+                                    class="progress-fill">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            id="enrollSampleBtn"
+                            class="primary-button"
+                            disabled>
+
+                            Record Sample
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="enrollmentMessage"
+                    class="message-box hidden">
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 VERIFICATION SECTION
+            ========================================== -->
+
+            <section
+                id="verification"
+                class="page-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="small-label">
+                            STEP 02
+                        </p>
+
+                        <h2>
+                            Identity Verification
+                        </h2>
+
+                        <p>
+                            Verify whether the current typing pattern
+                            matches the enrolled user.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="verification-layout">
+
+                    <div class="panel verification-panel">
+
+                        <div class="verification-user">
+
+                            <div class="large-avatar">
+                                ?
+                            </div>
+
+                            <div>
+
+                                <p>
+                                    Verifying User
+                                </p>
+
+                                <h3 id="verificationUser">
+                                    No User Selected
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="phrase-box">
+
+                            <p>
+                                Type the verification phrase:
+                            </p>
+
+                            <strong id="verificationPhrase">
+                                TypePrint verifies my identity
+                                through my typing rhythm.
+                            </strong>
+
+                        </div>
+
+
+                        <textarea
+                            id="verificationInput"
+                            class="typing-input"
+                            placeholder="Type the phrase to verify..."
+                            rows="4"
+                            autocomplete="off"
+                            spellcheck="false">
+                        </textarea>
+
+
+                        <div class="verification-actions">
+
+                            <button
+                                id="verifyBtn"
+                                class="primary-button"
+                                disabled>
+
+                                Verify Identity
+
+                            </button>
+
+                            <button
+                                id="clearVerificationBtn"
+                                class="secondary-button">
+
+                                Clear
+
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="verificationProgress"
+                            class="verification-progress hidden">
+
+                            <span class="loader"></span>
+
+                            AI is analysing typing behaviour...
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESULT CARD -->
+
+                    <div
+                        id="verificationResult"
+                        class="panel result-panel">
+
+                        <div class="result-header">
+
+                            <p class="small-label">
+                                AI VERIFICATION RESULT
+                            </p>
+
+                            <span
+                                id="resultStatus"
+                                class="status-badge waiting">
+                                WAITING
+                            </span>
+
+                        </div>
+
+
+                        <div class="match-score">
+
+                            <div
+                                id="matchCircle"
+                                class="match-circle">
+
+                                <span
+                                    id="matchPercentage">
+                                    --%
+                                </span>
+
+                                <small>
+                                    Match
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <h2 id="resultTitle">
+                            Waiting for verification
+                        </h2>
+
+                        <p id="resultDescription">
+                            Type the phrase and start verification
+                            to receive an AI-based result.
+                        </p>
+
+
+                        <div class="result-details">
+
+                            <div>
+                                <span>Typing Pattern</span>
+                                <strong id="patternResult">
+                                    --
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Confidence</span>
+                                <strong id="confidenceResult">
+                                    --
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Decision Time</span>
+                                <strong id="decisionTime">
+                                    --
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 ANALYTICS SECTION
+            ========================================== -->
+
+            <section
+                id="analytics"
+                class="page-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="small-label">
+                            AI ANALYTICS
+                        </p>
+
+                        <h2>
+                            Typing Behaviour Analytics
+                        </h2>
+
+                        <p>
+                            Visual representation of keystroke
+                            biometric features.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="small-label">
+                                    KEYSTROKE PATTERN
+                                </p>
+
+                                <h2>
+                                    Typing Rhythm
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="typingChart">
+                            </canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <p class="small-label">
+                                    BIOMETRIC FEATURES
+                                </p>
+
+                                <h2>
+                                    Feature Analysis
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="feature-list">
+
+                            <div class="feature-row">
+
+                                <div>
+                                    <span>
+                                        Dwell Time
+                                    </span>
+
+                                    <small>
+                                        Key press duration
+                                    </small>
+                                </div>
+
+                                <strong id="analyticsDwell">
+                                    -- ms
+                                </strong>
+
+                            </div>
+
+
+                            <div class="feature-row">
+
+                                <div>
+                                    <span>
+                                        Flight Time
+                                    </span>
+
+                                    <small>
+                                        Key-to-key interval
+                                    </small>
+                                </div>
+
+                                <strong id="analyticsFlight">
+                                    -- ms
+                                </strong>
+
+                            </div>
+
+
+                            <div class="feature-row">
+
+                                <div>
+                                    <span>
+                                        Typing Speed
+                                    </span>
+
+                                    <small>
+                                        Words per minute
+                                    </small>
+                                </div>
+
+                                <strong id="analyticsSpeed">
+                                    -- WPM
+                                </strong>
+
+                            </div>
+
+
+                            <div class="feature-row">
+
+                                <div>
+                                    <span>
+                                        Keystrokes
+                                    </span>
+
+                                    <small>
+                                        Total captured keys
+                                    </small>
+                                </div>
+
+                                <strong id="analyticsKeys">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY INFORMATION -->
+
+                <div class="panel security-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="small-label">
+                                SECURITY MODEL
+                            </p>
+
+                            <h2>
+                                How TypePrint Works
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-steps">
+
+                        <div class="security-step">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>
+                                    Capture
+                                </h3>
+
+                                <p>
+                                    Record key timing information
+                                    while the user types.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-step">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <h3>
+                                    Extract
+                                </h3>
+
+                                <p>
+                                    Convert keystrokes into
+                                    biometric timing features.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-step">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <h3>
+                                    Compare
+                                </h3>
+
+                                <p>
+                                    Compare the current pattern
+                                    with the enrolled profile.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-step">
+
+                            <span>04</span>
+
+                            <div>
+
+                                <h3>
+                                    Detect
+                                </h3>
+
+                                <p>
+                                    Identify matching or suspicious
+                                    typing behaviour.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 FOOTER
+            ========================================== -->
+
+            <footer class="footer">
+
+                <div>
+
+                    <strong>
+                        TypePrint
+                    </strong>
+
+                    <span>
+                        | AI Proxy Attendance Detector
+                    </span>
+
+                </div>
+
+                <p>
+                    Science Expo 2026 • AI & Data Science
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- Step 3: JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

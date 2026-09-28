@@ -1,0 +1,1279 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TypePrint AI</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            background:
+                #f4f6fb;
+
+            color:
+                #1f2937;
+
+        }
+
+
+        header {
+
+            background:
+                #111827;
+
+            color:
+                white;
+
+            padding:
+                25px;
+
+            text-align:
+                center;
+
+        }
+
+
+        header h1 {
+
+            margin:
+                0 0 8px;
+
+            font-size:
+                32px;
+
+        }
+
+
+        header p {
+
+            margin:
+                0;
+
+            color:
+                #d1d5db;
+
+        }
+
+
+        .container {
+
+            width:
+                90%;
+
+            max-width:
+                1000px;
+
+            margin:
+                30px auto;
+
+        }
+
+
+        .card {
+
+            background:
+                white;
+
+            padding:
+                25px;
+
+            margin-bottom:
+                25px;
+
+            border-radius:
+                15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
+
+        }
+
+
+        .card h2 {
+
+            margin-top:
+                0;
+
+            color:
+                #111827;
+
+        }
+
+
+        button {
+
+            border:
+                none;
+
+            padding:
+                12px 20px;
+
+            border-radius:
+                8px;
+
+            background:
+                #2563eb;
+
+            color:
+                white;
+
+            font-size:
+                15px;
+
+            cursor:
+                pointer;
+
+            margin-top:
+                10px;
+
+        }
+
+
+        button:hover {
+
+            opacity:
+                0.9;
+
+        }
+
+
+        input,
+        textarea {
+
+            width:
+                100%;
+
+            padding:
+                12px;
+
+            margin-top:
+                8px;
+
+            border:
+                1px solid
+                #d1d5db;
+
+            border-radius:
+                8px;
+
+            font-size:
+                15px;
+
+        }
+
+
+        textarea {
+
+            resize:
+                vertical;
+
+        }
+
+
+        .status {
+
+            padding:
+                12px;
+
+            background:
+                #ecfdf5;
+
+            color:
+                #047857;
+
+            border-radius:
+                8px;
+
+            margin-top:
+                15px;
+
+        }
+
+
+        .result {
+
+            white-space:
+                pre-line;
+
+            margin-top:
+                15px;
+
+            padding:
+                15px;
+
+            background:
+                #f9fafb;
+
+            border-radius:
+                8px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap:
+                25px;
+
+        }
+
+
+        .badge {
+
+            display:
+                inline-block;
+
+            padding:
+                6px 12px;
+
+            border-radius:
+                20px;
+
+            background:
+                #e0e7ff;
+
+            color:
+                #3730a3;
+
+            font-size:
+                13px;
+
+            margin-top:
+                10px;
+
+        }
+
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                20px;
+
+            color:
+                #6b7280;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>TypePrint AI</h1>
+
+    <p>
+        AI-Powered Typing Pattern Authentication
+    </p>
+
+    <span class="badge">
+        One-Class SVM
+    </span>
+
+</header>
+
+
+<div class="container">
+
+
+    <!-- ============================== -->
+    <!-- BACKEND STATUS -->
+    <!-- ============================== -->
+
+    <div class="card">
+
+        <h2>System Status</h2>
+
+        <button onclick="checkBackend()">
+            Check Backend
+        </button>
+
+        <div
+            id="result"
+            class="status"
+        >
+            Backend status not checked.
+        </div>
+
+    </div>
+
+
+
+    <!-- ============================== -->
+    <!-- TYPING TEST -->
+    <!-- ============================== -->
+
+    <div class="card">
+
+        <h2>Typing Analysis</h2>
+
+        <p>
+            Type the following sentence:
+        </p>
+
+        <p>
+            <b>
+                Artificial intelligence is
+                transforming the way we learn
+                and work.
+            </b>
+        </p>
+
+
+        <textarea
+            id="typingInput"
+            rows="6"
+            placeholder="Start typing here..."
+            onkeydown="keyDownHandler(event)"
+            onkeyup="keyUpHandler(event)"
+        ></textarea>
+
+
+        <button onclick="analyzeTyping()">
+            Analyze Typing
+        </button>
+
+
+        <button onclick="saveTypingSample()">
+            Save Typing Sample
+        </button>
+
+
+        <div
+            id="analysisResult"
+            class="result"
+        ></div>
+
+
+        <div
+            id="sampleResult"
+            class="result"
+        ></div>
+
+    </div>
+
+
+
+    <div class="grid">
+
+
+        <!-- ============================== -->
+        <!-- ENROLLMENT -->
+        <!-- ============================== -->
+
+        <div class="card">
+
+            <h2>User Enrollment</h2>
+
+            <p>
+                Create a typing profile
+                using 10 or more samples.
+            </p>
+
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Enter your name"
+            >
+
+
+            <input
+                type="text"
+                id="studentId"
+                placeholder="Enter Student ID"
+            >
+
+
+            <button onclick="enrollUser()">
+                Enroll User
+            </button>
+
+
+            <div
+                id="enrollResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+
+        <!-- ============================== -->
+        <!-- VERIFICATION -->
+        <!-- ============================== -->
+
+        <div class="card">
+
+            <h2>User Verification</h2>
+
+            <p>
+                Verify a new typing sample
+                against the trained AI model.
+            </p>
+
+
+            <input
+                type="text"
+                id="verifyStudentId"
+                placeholder="Enter Student ID"
+            >
+
+
+            <button onclick="verifyUser()">
+                Verify Typing
+            </button>
+
+
+            <div
+                id="verifyResult"
+                class="result"
+            ></div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<footer>
+
+    TypePrint AI • AI & Data Science Project
+
+</footer>
+
+
+
+<script>
+
+
+// ==============================
+// BACKEND CHECK
+// ==============================
+
+async function checkBackend() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:5000/api/health"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        result.innerText =
+            "● Backend Online\n" +
+            "AI Engine: " +
+            (data.ai_engine || "One-Class SVM");
+
+
+    }
+
+    catch (error) {
+
+        result.innerText =
+            "● Backend Connection Failed";
+
+    }
+
+}
+
+
+
+// ==============================
+// TYPING VARIABLES
+// ==============================
+
+let keyDownTimes = {};
+
+let dwellTimes = [];
+
+let flightTimes = [];
+
+let lastKeyUpTime = null;
+
+let typingStartTime = null;
+
+let typingSamples = [];
+
+
+
+// ==============================
+// KEY DOWN
+// ==============================
+
+function keyDownHandler(event) {
+
+    const key =
+        event.key;
+
+
+    const currentTime =
+        performance.now();
+
+
+    if (typingStartTime === null) {
+
+        typingStartTime =
+            currentTime;
+
+    }
+
+
+    if (
+        keyDownTimes[key] ===
+        undefined
+    ) {
+
+        keyDownTimes[key] =
+            currentTime;
+
+
+        if (
+            lastKeyUpTime !==
+            null
+        ) {
+
+            const flightTime =
+                currentTime -
+                lastKeyUpTime;
+
+
+            flightTimes.push(
+                flightTime
+            );
+
+        }
+
+    }
+
+}
+
+
+
+// ==============================
+// KEY UP
+// ==============================
+
+function keyUpHandler(event) {
+
+    const key =
+        event.key;
+
+
+    const currentTime =
+        performance.now();
+
+
+    if (
+        keyDownTimes[key] !==
+        undefined
+    ) {
+
+        const dwellTime =
+            currentTime -
+            keyDownTimes[key];
+
+
+        dwellTimes.push(
+            dwellTime
+        );
+
+
+        delete keyDownTimes[key];
+
+
+        lastKeyUpTime =
+            currentTime;
+
+    }
+
+}
+
+
+
+// ==============================
+// ANALYZE TYPING
+// ==============================
+
+async function analyzeTyping() {
+
+    const text =
+        document.getElementById(
+            "typingInput"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "analysisResult"
+        );
+
+
+    if (
+        text.trim() === ""
+    ) {
+
+        result.innerText =
+            "Please type something first.";
+
+        return;
+
+    }
+
+
+    if (
+        dwellTimes.length === 0
+    ) {
+
+        result.innerText =
+            "Please type again.";
+
+        return;
+
+    }
+
+
+    const totalTime =
+        performance.now() -
+        typingStartTime;
+
+
+    const totalDwell =
+        dwellTimes.reduce(
+            (sum, value) =>
+                sum + value,
+            0
+        );
+
+
+    const averageDwell =
+        totalDwell /
+        dwellTimes.length;
+
+
+    let averageFlight = 0;
+
+
+    if (
+        flightTimes.length > 0
+    ) {
+
+        const totalFlight =
+            flightTimes.reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+        averageFlight =
+            totalFlight /
+            flightTimes.length;
+
+    }
+
+
+    const words =
+        text.trim()
+            .split(/\s+/)
+            .length;
+
+
+    const typingSpeed =
+        words /
+        (totalTime / 60000);
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                "http://127.0.0.1:5000/api/analyze",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            text:
+                                text,
+
+                            dwellTime:
+                                averageDwell,
+
+                            flightTime:
+                                averageFlight,
+
+                            typingSpeed:
+                                typingSpeed,
+
+                            keystrokes:
+                                text.length
+
+                        })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        result.innerText =
+
+            "Dwell Time: " +
+            data.analysis.dwellTime +
+            " ms\n" +
+
+            "Flight Time: " +
+            data.analysis.flightTime +
+            " ms\n" +
+
+            "Typing Speed: " +
+            data.analysis.typingSpeed +
+            " WPM\n" +
+
+            "Keystrokes: " +
+            data.analysis.keystrokes +
+            "\n" +
+
+            "Words: " +
+            data.analysis.words;
+
+    }
+
+    catch (error) {
+
+        result.innerText =
+            "Analysis API connection failed.";
+
+    }
+
+}
+
+
+
+// ==============================
+// SAVE SAMPLE
+// ==============================
+
+async function saveTypingSample() {
+
+    const text =
+        document.getElementById(
+            "typingInput"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "sampleResult"
+        );
+
+
+    if (
+        text.trim() === ""
+    ) {
+
+        result.innerText =
+            "Please type something first.";
+
+        return;
+
+    }
+
+
+    if (
+        dwellTimes.length === 0
+    ) {
+
+        result.innerText =
+            "Please type again.";
+
+        return;
+
+    }
+
+
+    const totalDwell =
+        dwellTimes.reduce(
+            (sum, value) =>
+                sum + value,
+            0
+        );
+
+
+    const averageDwell =
+        totalDwell /
+        dwellTimes.length;
+
+
+    let averageFlight = 0;
+
+
+    if (
+        flightTimes.length > 0
+    ) {
+
+        const totalFlight =
+            flightTimes.reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+    }
+
+
+    const typingTime =
+        performance.now() -
+        typingStartTime;
+
+
+    const words =
+        text.trim()
+            .split(/\s+/)
+            .length;
+
+
+    const typingSpeed =
+        words /
+        (typingTime / 60000);
+
+
+    const sample = {
+
+        dwellTime:
+            averageDwell,
+
+        flightTime:
+            averageFlight,
+
+        typingSpeed:
+            typingSpeed,
+
+        keystrokes:
+            text.length
+
+    };
+
+
+    typingSamples.push(
+        sample
+    );
+
+
+    result.innerText =
+        "Sample " +
+        typingSamples.length +
+        " saved successfully.";
+
+
+    dwellTimes = [];
+
+    flightTimes = [];
+
+    keyDownTimes = {};
+
+    lastKeyUpTime = null;
+
+    typingStartTime = null;
+
+}
+
+
+
+// ==============================
+// ENROLL USER
+// ==============================
+
+async function enrollUser() {
+
+    const name =
+        document.getElementById(
+            "studentName"
+        ).value;
+
+
+    const studentId =
+        document.getElementById(
+            "studentId"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "enrollResult"
+        );
+
+
+    if (
+        name.trim() === "" ||
+        studentId.trim() === ""
+    ) {
+
+        result.innerText =
+            "Enter Name and Student ID.";
+
+        return;
+
+    }
+
+
+    if (
+        typingSamples.length < 10
+    ) {
+
+        result.innerText =
+            "Need 10 typing samples. " +
+            "Current: " +
+            typingSamples.length;
+
+        return;
+
+    }
+
+
+    result.innerText =
+        "Training AI model...";
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                "http://127.0.0.1:5000/api/enroll",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            name:
+                                name,
+
+                            student_id:
+                                studentId,
+
+                            samples:
+                                typingSamples
+
+                        })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        result.innerText =
+            data.message;
+
+    }
+
+    catch (error) {
+
+        result.innerText =
+            "Enrollment API connection failed.";
+
+    }
+
+}
+
+
+
+// ==============================
+// VERIFY USER
+// ==============================
+
+async function verifyUser() {
+
+    const studentId =
+        document.getElementById(
+            "verifyStudentId"
+        ).value;
+
+
+    const text =
+        document.getElementById(
+            "typingInput"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "verifyResult"
+        );
+
+
+    if (
+        studentId.trim() === ""
+    ) {
+
+        result.innerText =
+            "Enter Student ID.";
+
+        return;
+
+    }
+
+
+    if (
+        text.trim() === ""
+    ) {
+
+        result.innerText =
+            "Please type something first.";
+
+        return;
+
+    }
+
+
+    if (
+        dwellTimes.length === 0
+    ) {
+
+        result.innerText =
+            "Please type a fresh sample.";
+
+        return;
+
+    }
+
+
+    const totalDwell =
+        dwellTimes.reduce(
+            (sum, value) =>
+                sum + value,
+            0
+        );
+
+
+    const averageDwell =
+        totalDwell /
+        dwellTimes.length;
+
+
+    let averageFlight = 0;
+
+
+    if (
+        flightTimes.length > 0
+    ) {
+
+        const totalFlight =
+            flightTimes.reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+        averageFlight =
+            totalFlight /
+            flightTimes.length;
+
+    }
+
+
+    const typingTime =
+        performance.now() -
+        typingStartTime;
+
+
+    const words =
+        text.trim()
+            .split(/\s+/)
+            .length;
+
+
+    const typingSpeed =
+        words /
+        (typingTime / 60000);
+
+
+    result.innerText =
+        "AI is verifying...";
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                "http://127.0.0.1:5000/api/verify",
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            student_id:
+                                studentId,
+
+                            sample: {
+
+                                dwellTime:
+                                    averageDwell,
+
+                                flightTime:
+                                    averageFlight,
+
+                                typingSpeed:
+                                    typingSpeed,
+
+                                keystrokes:
+                                    text.length
+
+                            }
+
+                        })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok
+        ) {
+
+            result.innerText =
+                data.message;
+
+            return;
+
+        }
+
+
+        result.innerText =
+
+            "Result: " +
+            data.result +
+            "\n" +
+
+            "Status: " +
+            data.status +
+            "\n" +
+
+            "Confidence: " +
+            data.confidence +
+            "%\n\n" +
+
+            "AI Model: " +
+            data.ai_model;
+
+    }
+
+    catch (error) {
+
+        result.innerText =
+            "Verification API connection failed.";
+
+    }
+
+}
+
+
+</script>
+
+</body>
+
+</html>
+```

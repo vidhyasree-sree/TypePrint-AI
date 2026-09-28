@@ -1,0 +1,70 @@
+{
+    "users": [
+        {
+            "name": "Vidhya Sree S",
+            "student_id": "190",
+            "samples": [
+                {
+                    "dwellTime": 367.4285713945116,
+                    "flightTime": 409.28333336114883,
+                    "typingSpeed": 82.94625083055607,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 76.50000000851495,
+                    "flightTime": 73.59230768680573,
+                    "typingSpeed": 124.308533779616,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 87.4249999821186,
+                    "flightTime": 104.27272728356448,
+                    "typingSpeed": 144.81909681073284,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 84.54999996721745,
+                    "flightTime": 117.16666668653488,
+                    "typingSpeed": 190.57904266082886,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 88.0499999721845,
+                    "flightTime": 115.68000001907349,
+                    "typingSpeed": 125.53877055759992,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 83.5750000178814,
+                    "flightTime": 464.4333333174388,
+                    "typingSpeed": 154.38054805094558,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 44.89999997615814,
+                    "flightTime": 517.8000000715256,
+                    "typingSpeed": 231.31192413181498,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 81.59999996423721,
+                    "flightTime": 419,
+                    "typingSpeed": 195.19177592135517,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 87.84999996423721,
+                    "flightTime": 649.8000000715256,
+                    "typingSpeed": 208.62308762169678,
+                    "keystrokes": 68
+                },
+                {
+                    "dwellTime": 103.39999997615814,
+                    "flightTime": 385.39999997615814,
+                    "typingSpeed": 189.51956789681245,
+                    "keystrokes": 68
+                }
+            ]
+        }
+    ]
+}
